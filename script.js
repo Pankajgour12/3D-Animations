@@ -1,11 +1,11 @@
 const locoScroll = new LocomotiveScroll({
-  el: document.querySelector("#main-wrapper"),
+  el: document.querySelector("#main"),
   smooth: true,
 });
 
 locoScroll.on("scroll", ScrollTrigger.update);
 
-ScrollTrigger.scrollerProxy("#main-wrapper", {
+ScrollTrigger.scrollerProxy("#main", {
   scrollTop(value) {
     return arguments.length
       ? locoScroll.scrollTo(value, 0, 0)
@@ -19,7 +19,7 @@ ScrollTrigger.scrollerProxy("#main-wrapper", {
       height: window.innerHeight,
     };
   },
-  pinType: document.querySelector("#main-wrapper").style.transform
+  pinType: document.querySelector("#main").style.transform
     ? "transform"
     : "fixed",
 });
@@ -339,7 +339,7 @@ function files(index) {
 ./assets/male0299.png
 ./assets/male0300.png
 `;
-  return data.split("\n")[index];
+  return  data.split("\n")[index];
 }
 
 const frameCount = 300;
@@ -349,11 +349,14 @@ const imageSeq = {
   frame: 0,
 };
 
-for (let i = 0; i < frameCount; i++) {
+
+
+ for (let i = 0; i < frameCount; i++) {
   const img = new Image();
   img.src = files(i);
+ 
   images.push(img);
-}
+} 
 
 gsap.to(imageSeq, {
   frame: frameCount - 1,
@@ -364,17 +367,13 @@ gsap.to(imageSeq, {
     trigger: ".page1>canvas",
     start: "top top",
     end: "600% top",
-    scroller: "#main-wrapper",
+    scroller: "#main",
   },
   onUpdate: render,
 });
 
-if (images[0]) {
-  if (images[0].complete) {
-    render();
-  } else {
-    images[0].addEventListener("load", render);
-  }
+if (images[0] && images[0].onload) {
+  render();
 }
 
 function render() {
@@ -404,11 +403,16 @@ function scaleImage(img, ctx) {
 
 ScrollTrigger.create({
   trigger: ".page1>canvas",
-  start: "top top",
   pin: true,
-  scroller: "#main-wrapper",
+  scroller: "#main",
+  start: "top top",
   end: "600% top",
 });
+
+
+
+
+
 
 gsap.to(".page2", {
   scrollTrigger: {
@@ -418,7 +422,7 @@ gsap.to(".page2", {
 
    /*  markers: true,
     pin: true, */
-    scroller: "#main-wrapper",
+    scroller: "#main",
   },
 });
 
@@ -430,7 +434,7 @@ gsap.to(".page3", {
 
    /*  markers: true,
     pin: true, */
-    scroller: "#main-wrapper",
+    scroller: "#main",
   },
 });
 
@@ -442,7 +446,7 @@ gsap.to(".page4", {
 
    /*  markers: true,
     pin: true, */
-    scroller: "#main-wrapper",
+    scroller: "#main",
   },
 });
 
