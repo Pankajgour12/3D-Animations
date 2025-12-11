@@ -49,11 +49,42 @@ canvas {
 
 
 #loop{
-  height: 30%;
+  height: 25%;
   width: 100vw;
   position: absolute;
-  top: 50%;
+  top: 30%;
   /* left: 50%; */
  /*  transform: translate(-50%, -50%); */
- background-color: aqua;
+ background-color: #00ffff;
+ font-size: 5rem;
+white-space: nowrap;
+
+font-family:Helvetica, sans-serif;
+
+
 }
+
+#loop>h1{
+font-weight: 400;
+animation-name: anime;
+animation-duration: 10s;
+animation-timing-function: linear;
+animation-iteration-count: infinite;
+}
+#loop>h1>span{
+  -webkit-text-stroke: 1.2px #000;
+  color: transparent;
+}
+
+
+@keyframes anime {
+  0%{
+    transform: translate(0%);
+
+  }
+  100%{
+    transform: translateX(-100%);
+  }
+}
+
+
