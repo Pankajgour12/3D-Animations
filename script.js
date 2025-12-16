@@ -339,7 +339,8 @@ function files(index) {
 ./assets/male0299.png
 ./assets/male0300.png
 `;
-  return  data.split("\n")[index];
+  var list = data.trim().split("\n");
+  return list[index];
 }
 
 const frameCount = 300;
@@ -356,6 +357,9 @@ const imageSeq = {
   img.src = files(i);
  
   images.push(img);
+  if (i === 0) {
+    img.onload = render;
+  }
 } 
 
 gsap.to(imageSeq, {
@@ -372,12 +376,18 @@ gsap.to(imageSeq, {
   onUpdate: render,
 });
 
-if (images[0] && images[0].onload) {
+if (images[0] && images[0].complete) {
   render();
 }
 
-function render() {
+/* function render() {
   scaleImage(images[imageSeq.frame], context);
+} */
+
+  function render() {
+  const img = images[imageSeq.frame];
+  if (!img || !img.complete) return;
+  scaleImage(img, context);
 }
 
 function scaleImage(img, ctx) {
@@ -454,3 +464,37 @@ ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
 
 
 ScrollTrigger.refresh();
+
+/* Real-time month + year for the header button */
+(function () {
+  function updateMonthYear() {
+    var btn = document.getElementById("dateButton");
+    if (!btn) return;
+    var now = new Date();
+    var parts = new Intl.DateTimeFormat(navigator.language || "en-US", {
+      month: "long",
+      year: "numeric",
+    }).formatToParts(now);
+    var month = parts.find(function (p) {
+      return p.type === "month";
+    });
+    var year = parts.find(function (p) {
+      return p.type === "year";
+    });
+    var monthText = month ? month.value : now.toLocaleString(undefined, { month: "long" });
+    var yearText = year ? year.value : String(now.getFullYear());
+
+    var monthEl = btn.querySelector(".date-month");
+    var yearEl = btn.querySelector(".date-year");
+    if (monthEl) monthEl.textContent = monthText;
+    if (yearEl) yearEl.textContent = yearText;
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", updateMonthYear);
+  } else {
+    updateMonthYear();
+  }
+
+  setInterval(updateMonthYear, 60 * 1000);
+})();
