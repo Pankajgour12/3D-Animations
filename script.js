@@ -430,8 +430,8 @@ gsap.to(".page2", {
     start: "top top",
     end: "bottom top",
 
-   /*  markers: true,
-    pin: true, */
+    //  markers: true,
+    pin: true, 
     scroller: "#main",
   },
 });
@@ -442,8 +442,8 @@ gsap.to(".page3", {
     start: "top top",
     end: "bottom top",
 
-   /*  markers: true,
-    pin: true, */
+    //  markers: true,
+    pin: true, 
     scroller: "#main",
   },
 });
@@ -454,8 +454,8 @@ gsap.to(".page4", {
     start: "top top",
     end: "bottom top",
 
-   /*  markers: true,
-    pin: true, */
+    // markers: true,
+    pin: true,
     scroller: "#main",
   },
 });
