@@ -26,19 +26,22 @@ font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, O
 }
 
 .page2 {
+  position: relative;
   height: 100vh;
   width: 100vw;
   /* background-color: #004400; */
 }
 .page3 {
+  position: relative;
   height: 100vh;
   width: 100vw;
-  /* background-color: #000066; */
+  background-color: #000066;
 }
 .page4 {
+  position: relative;
   height: 100vh;
   width: 100vw;
-  /* background-color: #666600; */
+  background-color: #666600;
 }
 
 canvas {
@@ -47,6 +50,7 @@ canvas {
   max-width: 100vw;
   max-height: 100vh;
   /* padding: 1rem; */
+ /* padding: 1rem; */
 }
 
 
@@ -188,5 +192,50 @@ nav>h3{
   text-transform: uppercase;
   font-weight: 500;
 }
+
+
+
+
+.page2>#right-text{
+  position: absolute;
+  top: 30%;
+  left: 10%;
+
+}
+.page2>#right-text>h4{
+font-weight: 400;
+color: #7c7c7c;
+  
+}
+.page2>#right-text>h1{
+line-height: 1.5;
+font-size: 2rem;
+}
+
+
+.page2>#left-text{
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  text-transform: uppercase;
+  text-align: end;
+
+}
+.page2>#left-text>h1{
+line-height: 1.5;
+font-size: 2rem;
+}
+
+
+.page2>#left-text>h4{
+font-weight: 400;
+color: #7c7c7c;
+  
+}
+
+
+
+
+
 
 
